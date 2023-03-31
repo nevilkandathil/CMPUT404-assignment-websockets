@@ -114,8 +114,9 @@ def read_ws(ws,client):
             print("WS RECV: %s" % msg)
             if (msg is not None):
                 packet = json.loads(msg)
-
+                # print("packet: ", packet)
                 for e in packet:
+                    # print("=====", e)
                     myWorld.set(e, packet[e])
             else:
                 break
@@ -167,6 +168,7 @@ def update(entity):
     response = flask_post_json()
 
     # print(response)
+    # print("===== ", myWorld.get())
     # update my world
     myWorld.set(entity, response)
     return json.dumps(response)

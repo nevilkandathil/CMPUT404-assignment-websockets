@@ -183,7 +183,10 @@ function addEntity(entity, data) {
     // sendJSONXMLHTTPRequest("PUT", url, data, (jsonData) => {
     //     drawNextFrame();
     // });
-    socket.send(JSON.stringify({"entity": data}));
+    let jData = {};
+    jData[entity] = data;
+
+    socket.send(JSON.stringify(jData));
     drawNextFrame();
     // Websockets are awesome :D
 }
@@ -348,7 +351,7 @@ wsSetup();
 
 
 // 30 frames per second
-setInterval( update, 1000/30.0);
+setInterval( update, 1000/120.0);
 
 
     </script>
